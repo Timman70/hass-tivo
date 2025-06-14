@@ -1,96 +1,60 @@
-# hass-tivo-telnet
-Home Assistant custom component for TiVo Telnet control
-# TiVo Telnet Integration
+# Hass-TiVo Integration
 
-Control your TiVo (e.g. UHD51A, Bolt, Mini, etc.) over your local network using Telnet commands. Supports IR remote commands, channel favorites, and custom logos.
+A custom Home Assistant integration to control TiVo devices via telnet, with support for customizable favorite channel buttons.
 
-> Created by **timcloud**
+## 🚀 Features
 
----
+- Control your TiVo using button entities in Home Assistant
+- Define up to 20 favorite channels
+- Clean integration with the Home Assistant UI
 
-## 📦 Features
+## 📦 Installation
 
-- Control via Home Assistant switches
-- Channel up/down, guide, pause, play, etc.
-- Favorite channels as switches
-- Channel logos via `entity_picture`
-- Telnet-based — no official TiVo API required
-- HACS-compatible
+1. Download the latest [release ZIP](https://github.com/Timman70/hass-tivo/releases) or clone this repo into your Home Assistant `custom_components` directory:
 
----
-
-## ⚙️ Installation (HACS)
-
-1. Copy or upload this folder to:  
-   ```
-   /config/custom_components/tivo/
-   ```
-
-2. OR add the GitHub repo as a custom HACS repository.
-
-3. Restart Home Assistant.
-
-4. Go to **Settings > Devices & Services > Add Integration**  
-   Search for **TiVo Telnet**.
-
----
-
-## 📡 Enabling TiVo Remote Network Control
-
-You must enable **network remote control** on your TiVo:
-
-1. On your TiVo remote:
-   - Press: `TiVo → Settings → Network Settings → Remote Network Access`
-   - Enable **Allow Network Remote Control**
-
-2. Note your TiVo IP address. Use this during setup.
-
-3. Port **31339** must be open on your local network.
-
----
-
-## 🧠 Configuration
-
-### 📁 `favorites.yaml` (in `custom_components/tivo/`)
-
-Define your favorite channels and (optionally) custom icons:
-
-```yaml
-531:
-  name: "ION"
-  icon: "/local/ion.png"
-
-204:
-  name: "ESPN"
-  icon: "/local/espn.png"
+```bash
+cd config/custom_components
+git clone https://github.com/Timman70/hass-tivo
 ```
 
-> Place images in `/config/www/`, then access via `/local/`.
+2. Restart Home Assistant.
 
----
+3. Go to **Settings → Devices & Services → Add Integration**, search for **TiVo**, and configure your device:
+   - Enter the device name and IP address
+   - Set up to 20 favorite channels by name and channel number
 
-## 🖼 Icon Support
+## 🔘 Button Entities
 
-Use any image file (PNG, JPG, SVG). Make sure the path looks like:
+Each favorite channel is exposed as a `button` entity like:
 
-```yaml
-icon: "/local/mychannel.png"
+```
+button.living_room_espn
+button.master_bedroom_abc
 ```
 
----
+You can use these in dashboards, scripts, or automations to tune to specific channels.
 
-## 🛠 Supported Commands
+> **Note:** Entities now support unique IDs and can be renamed or disabled in the UI.
 
-Switches will be created for:
+## 🧰 Requirements
 
-- Guide, Play, Pause, Stop
-- Channel Up / Down
-- Live TV, My Shows
-- Arrows, Select, Clear, Tivo (central)
+- A TiVo device with network access and port `31339` open for telnet control
+- Home Assistant 2023.5+ recommended
 
----
+## 📎 Example Automation
 
-## 🙌 Credits
+```yaml
+alias: Watch ESPN
+trigger:
+  - platform: state
+    entity_id: input_boolean.watch_espn
+    to: "on"
+action:
+  - service: button.press
+    target:
+      entity_id: button.living_room_espn
+```
 
-Created and maintained by **timcloud**  
-Based on community feedback and real-world TiVo reverse-engineering.
+## 👨‍💻 Author
+
+Maintained by [Timman70](https://github.com/Timman70)
