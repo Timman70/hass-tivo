@@ -10,7 +10,7 @@ A custom Home Assistant integration to control TiVo devices via telnet, with sup
 
 ## 📦 Installation
 
-1. Download the latest [release ZIP](https://github.com/Timman70/hass-tivo/releases) or clone this repo into your Home Assistant `custom_components` directory:
+1. Download the latest [release ZIP]([https://github.com/Timman70/hass-tivo/releases](https://github.com/Timman70/hass-tivo/blob/main/tivo_v0.1.zip)) or clone this repo into your Home Assistant `custom_components` directory:
 
 ```bash
 cd config/custom_components
