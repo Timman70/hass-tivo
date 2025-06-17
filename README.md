@@ -36,6 +36,18 @@ You can use these in dashboards, scripts, or automations to tune to specific cha
 
 > **Note:** Entities now support unique IDs and can be renamed or disabled in the UI.
 
+## ✏️ Edit Channels Anytime
+
+To change channel names or numbers after setup:
+
+1. Go to **Settings > Devices & Services**
+2. Find the TiVo integration
+3. Click **⋯ > Configure**
+4. Update your favorite channel labels and numbers
+5. Click **Submit**
+
+Each channel is exposed as a **button entity** (e.g., `button.officetivo_hbo`) that sends the channel number to the TiVo when pressed.
+
 ## 🧰 Requirements
 
 - A TiVo device with network access and port `31339` open for telnet control
