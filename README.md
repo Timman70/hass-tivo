@@ -8,6 +8,17 @@ A custom Home Assistant integration to control TiVo devices via telnet, with sup
 - Define up to 20 favorite channels
 - Clean integration with the Home Assistant UI
 
+## 📡 Enable TiVo Remote Control
+
+Before using this integration, you must enable remote access on your TiVo:
+
+1. On your TiVo remote, press the **TiVo** button
+2. Navigate to **Settings & Messages → Settings → Network → View Network Details**
+3. Ensure **Allow Network Remote Control** is set to **Yes**
+4. Note the IP address shown here for use during integration setup
+
+Once done, continue below:
+
 ## 📦 Installation
 
 1. Download the latest [release ZIP](https://github.com/Timman70/hass-tivo/blob/main/tivo_v0.1.zip) or clone this repo into your Home Assistant `custom_components` directory:
